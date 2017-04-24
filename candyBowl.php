@@ -30,35 +30,27 @@ class candyBowl {
       $colorValue = rand(0,3);
 
       //add a skittle
-      if ($value == 0) {
-        $skittle = new Skittle;
-        $skittle.setCandyColor
-        if ($value == 0)
-          $skittle->color = $this->colors[$value];
-        if ($value == 1)
-          $skittle->color = $this->colors[$value];
-        if ($value == 2)
-          $skittle->color = $this->colors[$value];
-        if ($value == 3)
-          $skittle->color = $this->colors[$value];
+      if ($candyValue == 0) {
+        $skittle = new Skittle();
+        $skittle->setCandyColor($colorValue);
 
         $candyBowl[] = $skittle;
       }
 
       //or add an m&m
-      if ($value == 1) {
-        $mandm = new mandm();
-        $value = rand(0,3);
-        if ($value == 0)
-          $mandm->color = $this->colors[$value];
-        if ($value == 1)
-          $mandm->color = $this->colors[$value];
-        if ($value == 2)
-          $mandm->color = $this->colors[$value];
-        if ($value == 3)
-          $mandm->color = $this->colors[$value];
+      if ($candyValue == 1) {
+        $mandm = new MandM();
+        $mandm->setCandyColor($colorValue);
 
         $candyBowl[] = $mandm;
+      }
+
+      //or add a Reese's Piece
+      if ($candyValue == 2) {
+        $reesesPiece = new ReesesPiece();
+        $reesesPiece->setCandyColor($colorValue);
+
+        $candyBowl[] = $reesesPiece;
       }
     }
 
@@ -69,8 +61,10 @@ class candyBowl {
     for ($i = 0; $i < sizeof($this->bowl); $i++) {
       if (get_class($this->bowl[$i]) == 'skittle') {
         echo $this->bowl[$i]->color . " skittle\n";
-      } else {
+      } else if (get_class($this->bowl[$i]) == 'm&m'){
         echo $this->bowl[$i]->color . " m&m\n";
+      } else {
+        echo $this->bowl[$i]->color . " reese's piece\n";
       }
     }
   }
@@ -80,19 +74,26 @@ class candyBowl {
     $sortedBowl = array();
     $skittles = array();
     $mandms = array();
+    $reesesPieces = array();
 
     for ($i = 0; $i < sizeof($this->bowl); $i++) {
       if (get_class($this->bowl[$i]) == 'skittle')
         $skittles[] = $this->bowl[$i];
-      else
+      else if (get_class($this->bowl[$i]) == 'm&m')
         $mandms[] = $this->bowl[$i];
+      else
+        $reesesPieces[] = $this->bowl[$i];
     }
 
     asort($skittles);
     asort($mandms);
+    asort($reesesPieces);
 
     $sortedBowl += $mandms;
     $sortedBowl += $skittles;
+    $sortedBowl += $reesesPieces;
+
+    $this->bowl =$sortedBowl;
   }
 
 }
