@@ -4,8 +4,9 @@
 
 abstract class Candy {
   public $color;
+  public $colors = array("Red","Orange","Yellow","Green");
 
-  public function setCandyColor($value) {
+  function setCandyColor($value) {
     $this->color = $this->colors[$value];
   }
 }
@@ -15,11 +16,8 @@ class MandM extends Candy{}
 class ReesesPiece extends Candy{}
 
 // declare the bowl class
-class candyBowl {
+class CandyBowl {
   private $bowl;
-
-  //valid colors are red, orange, yellow, and green
-  public $colors = array("Red","Orange","Yelow","Green");
 
   public function fillCandyBowl() {
     $candyBowl = array();
@@ -58,13 +56,13 @@ class candyBowl {
   }
 
   public function printBowl() {
-    for ($i = 0; $i < sizeof($this->bowl); $i++) {\
-      if (get_class($this->bowl[$i]) == 'skittle') {
-        echo $this->bowl[$i]->color . " skittle\n";
-      } else if (get_class($this->bowl[$i]) == 'm&m'){
-        echo $this->bowl[$i]->color . " m&m\n";
+    for ($i = 0; $i < sizeof($this->bowl); $i++) {
+      if (get_class($this->bowl[$i]) == "Skittle") {
+        echo $this->bowl[$i]->color . " Skittle\n";
+      } else if (get_class($this->bowl[$i]) == 'MandM'){
+        echo $this->bowl[$i]->color . " M&M\n";
       } else {
-        echo $this->bowl[$i]->color . " reese's piece\n";
+        echo $this->bowl[$i]->color . " Reese's Piece\n";
       }
     }
   }
@@ -77,9 +75,9 @@ class candyBowl {
     $reesesPieces = array();
 
     for ($i = 0; $i < sizeof($this->bowl); $i++) {
-      if (get_class($this->bowl[$i]) == 'skittle')
+      if (get_class($this->bowl[$i]) == 'Skittle')
         $skittles[] = $this->bowl[$i];
-      else if (get_class($this->bowl[$i]) == 'm&m')
+      else if (get_class($this->bowl[$i]) == 'MandM')
         $mandms[] = $this->bowl[$i];
       else
         $reesesPieces[] = $this->bowl[$i];
@@ -93,7 +91,7 @@ class candyBowl {
     $sortedBowl += $skittles;
     $sortedBowl += $reesesPieces;
 
-    $this->bowl =$sortedBowl;
+    $this->bowl = $sortedBowl;
   }
 
 }
