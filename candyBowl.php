@@ -58,7 +58,7 @@ class candyBowl {
   }
 
   public function printBowl() {
-    for ($i = 0; $i < sizeof($this->bowl); $i++) {
+    for ($i = 0; $i < sizeof($this->bowl); $i++) {\
       if (get_class($this->bowl[$i]) == 'skittle') {
         echo $this->bowl[$i]->color . " skittle\n";
       } else if (get_class($this->bowl[$i]) == 'm&m'){
