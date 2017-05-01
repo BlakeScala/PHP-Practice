@@ -56,13 +56,13 @@ class CandyBowl {
   }
 
   public function printBowl() {
-    for ($i = 0; $i < sizeof($this->bowl); $i++) {
+    for ($i = 0; $i <= sizeof($this->bowl); $i++) {
       if (get_class($this->bowl[$i]) == "Skittle") {
-        echo $this->bowl[$i]->color . " Skittle\n";
+        echo $i + 1 . ". " . $this->bowl[$i]->color . " Skittle\n";
       } else if (get_class($this->bowl[$i]) == 'MandM'){
-        echo $this->bowl[$i]->color . " M&M\n";
+        echo $i + 1 . ". " . $this->bowl[$i]->color . " M&M\n";
       } else {
-        echo $this->bowl[$i]->color . " Reese's Piece\n";
+        echo $i + 1 . ". " . $this->bowl[$i]->color . " Reese's Piece\n";
       }
     }
   }
